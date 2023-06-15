@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+    <form action="#" th:action="@{/create-new-student}" th:object="${studentEntity}" method="post">
+        <input type="text" th:field="*{name}" placeholder="studentName"/>
+        <input type="number" th:field="*{age}" placeholder="studentAge"/>
+        <button type="submit">Create</button>
+    </form>
+
+    <div th:each="student:${allStudent}">
+        <div th:text="${student.name}"></div>
+        <div th:text="${student.age}"></div>
+        <a th:href="@{/delete-student-by-id/{id}(id = ${student.id})}">delete</a>
+    </div>
+</body>
+</html>
